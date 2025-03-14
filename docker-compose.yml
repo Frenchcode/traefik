@@ -28,7 +28,6 @@ services:
       - "traefik.http.routers.traefik-secure.rule=Host(`traefik.yourdomain`)"
       - traefik.http.routers.traefik.tls=true
       - traefik.http.routers.traefik.tls.certresolver=letsencrypt
-      - "traefik.http.routers.traefik-secure.service=api@internal"
 
 networks:
   proxy-traefik:
