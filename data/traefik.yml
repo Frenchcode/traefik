@@ -1,0 +1,31 @@
+api:
+  dashboard: true
+
+entryPoints:
+  web:
+    address: ":80"
+    http:
+    #  middlewares: # uncomment to add your own middleware
+      redirections:
+        entrypoint:
+          to: websecure
+          scheme: websecure
+
+  websecure:
+    address: :443
+    http:
+      middlewares:
+        - secureHeaders@file
+        - nofloc@file
+      tls:
+        certResolver: letsencrypt
+
+serversTransport:
+  insecureSkipVerify: true
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+  file:
+    filename: /configurations/dynamic.yaml
