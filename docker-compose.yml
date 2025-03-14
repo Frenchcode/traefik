@@ -30,8 +30,6 @@ services:
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_CREDENTIALS}"
 
-
-
 networks:
   proxy-traefik:
     external: true
