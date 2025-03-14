@@ -13,6 +13,7 @@ entryPoints:
 
   websecure:
     address: :443
+    http3: {}
     http:
       middlewares:
         - secureHeaders@file
