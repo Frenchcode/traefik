@@ -29,3 +29,24 @@ providers:
     exposedByDefault: false
   file:
     filename: /configurations/dynamic.yaml
+
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: your-email@example.com
+      storage: acme.json
+      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      #caServer: "https://acme-v02.api.letsencrypt.org/directory" # for production
+      keyType: EC384
+      httpChallenge:
+        entryPoint: web
+
+  buypass:
+    acme:
+      email: your-email@example.com
+      storage: acme.json
+      caServer: https://api.buypass.com/acme/directory
+      keyType: EC256
+      httpChallenge:
+        entryPoint: web
