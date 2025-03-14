@@ -16,8 +16,12 @@ http:
           X-Forwarded-Proto: https
     https-redirectscheme:
       redirectScheme:
-        scheme: websecure
+        scheme: https
         permanent: true
+    nofloc:
+      headers:
+        customResponseHeaders:
+          Permissions-Policy: "interest-cohort=()"
 
   #routers:
   #  portainer:

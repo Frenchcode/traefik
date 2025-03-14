@@ -9,14 +9,14 @@ entryPoints:
       redirections:
         entrypoint:
           to: websecure
-          scheme: websecure
+          scheme: https
 
   websecure:
     address: :443
-    http3: {}
-    http:
+    http3:
       middlewares:
-        - secureHeaders@file
+        - default-security-headers@file
+        - https-redirectscheme@file
         - nofloc@file
       tls:
         certResolver: letsencrypt
