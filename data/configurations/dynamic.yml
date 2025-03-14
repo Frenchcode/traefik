@@ -41,6 +41,13 @@ http:
   #        - url: "https://ip-addrese:9443"
   #      passHostHeader: true
 
+  # UserName : admin
+  # Password : password
+  user-auth:
+    basicAuth:
+      users:
+        - "admin:password"
+
 
   tls:
   options:
