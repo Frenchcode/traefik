@@ -14,10 +14,12 @@ entryPoints:
   websecure:
     address: :443
     http3:
+      advertisedPort: 443
+    http:
       middlewares:
-        - default-security-headers@file
-        - https-redirectscheme@file
-        - nofloc@file
+          - default-security-headers@file
+          - https-redirectscheme@file
+          - nofloc@file
       tls:
         certResolver: letsencrypt
 
