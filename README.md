@@ -11,6 +11,21 @@ Traefik is based on the concept of EntryPoints, Routers, Middlewares and Service
 - **Middlewares**: Attached to the routers, middlewares can modify the requests or responses before they are sent to your service
 - **Services**: are responsible for configuring how to reach the actual services that will eventually handle the incoming requests.
 
+## Configuration file
+
+You can configure Traefik in two way:
+
+- The fully **dynamic** routing configuration (referred to as the **dynamic configuration**)
+    - The dynamic configuration contains everything that defines how the requests are handled by your system. This configuration can change and is seamlessly hot-reloaded, without any request interruption or connection loss. 
+    ```console 
+    foo@bar:~$ vim /data/configurations/dynamic.yml
+    ```
+
+- The startup configuration (referred to as the **static configuration**)
+    - Elements in the **static** configuration set up connections to providers and define the entrypoints Traefik will listen to (these elements don't change often).
+    ```console 
+    foo@bar:~$ vim /data/traefik.yml
+    ```
 ## Steps to follow 
 
 - Create a docker network
