@@ -18,17 +18,18 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./data/traefik.yml:/traefik.yml:ro
+      - ./data/traefik.yml:/etc/traefik/traefik.yaml:ro
       - ./data/acme.json:/acme.json
-      - ./data/configurations:/configurations
+      - ./data/config/dynamic.yml:/config/dynamic.yaml:ro
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.mcoe.fr`)"
       - "traefik.http.routers.traefik-secure.entrypoints=websecure"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.yourdomain`)"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.mcoe.fr`)"
       - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_CREDENTIALS}"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      #- "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
       - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
       - "traefik.http.routers.traefik-secure.service=api@internal"
