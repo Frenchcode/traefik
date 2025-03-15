@@ -13,12 +13,12 @@ Traefik is based on the concept of EntryPoints, Routers, Middlewares and Service
 
 ## Configuration file
 
-You can configure Traefik in two way:
+You can configure Traefik in two ways:
 
 - The fully **dynamic** routing configuration (referred to as the **dynamic configuration**)
     - The dynamic configuration contains everything that defines how the requests are handled by your system. This configuration can change and is seamlessly hot-reloaded, without any request interruption or connection loss. 
     ```console 
-    foo@bar:~$ vim /data/configurations/dynamic.yml
+    foo@bar:~$ vim /data/config/dynamic.yml
     ```
 
 - The startup configuration (referred to as the **static configuration**)
