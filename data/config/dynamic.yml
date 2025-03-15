@@ -1,0 +1,62 @@
+http:
+  middlewares:    
+    default-security-headers:
+      headers:
+        customBrowserXSSValue: 0                            # X-XSS-Protection=1; mode=block
+        contentTypeNosniff: true                          # X-Content-Type-Options=nosniff
+        forceSTSHeader: true                              # Add the Strict-Transport-Security header even when the connection is HTTP
+        frameDeny: false                                   # X-Frame-Options=deny
+        referrerPolicy: "strict-origin-when-cross-origin"
+        sslRedirect: true                                 # Redirect to HTTPS if the connection is HTTP
+        stsIncludeSubdomains: true                        # Add includeSubdomains to the Strict-Transport-Security header
+        stsPreload: true                                  # Add preload flag appended to the Strict-Transport-Security header
+        stsSeconds: 3153600                              # Set the max-age of the Strict-Transport-Security header (63072000 = 2 years)
+        contentSecurityPolicy: "default-src 'self'"     
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    nofloc:
+      headers:
+        customResponseHeaders:
+          Permissions-Policy: "interest-cohort=()"
+
+  #routers:
+  #  portainer:
+  #    entryPoints:
+  #      - "websecure"
+  #    rule: "Host(`portainer.example.com`)"
+  #    middlewares:
+  #      - default-security-headers
+  #      - https-redirectscheme
+  #    tls: {}
+  #    service: portainer
+
+  #services:
+  #  portainer:
+  #    loadBalancer:
+  #      servers:
+  #        - url: "https://ip-addrese:9443"
+  #      passHostHeader: true
+
+  # UserName : admin
+  # Password : password
+  user-auth:
+    basicAuth:
+      users:
+        - "admin:password"
+
+
+  tls:
+  options:
+    default:
+      cipherSuites:
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+      minVersion: VersionTLS12
