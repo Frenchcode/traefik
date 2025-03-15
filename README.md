@@ -1,6 +1,6 @@
 # Traefik
 
-This is a traefik setup template you to setup a a reverse-proxy for all your docker containers 
+This is a traefik setup template you can use to setup a reverse-proxy for all your docker containers 
 
 ## Key Concept
 
