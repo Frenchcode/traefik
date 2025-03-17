@@ -2,8 +2,8 @@ global:
   checkNewVersion: false
   sendAnonymousUsage: false
 
-log:
-  level: DEBUG # change to INFO for production
+#log:
+#  level: DEBUG # change to INFO for production
 
 api:
   dashboard: true
@@ -23,10 +23,10 @@ entryPoints:
     http3:
       advertisedPort: 443
     http:
-      middlewares:
-          - default-security-headers@file
-          - https-redirectscheme@file
-          - nofloc@file
+      #middlewares:
+      #    - default-security-headers@file
+      #    - https-redirectscheme@file
+      #    - nofloc@file
       tls:
         certResolver: letsencrypt
 
