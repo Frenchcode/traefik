@@ -38,7 +38,7 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
   file:
-    filename: /config.yaml
+    filename: /config.yml
 
 
 certificatesResolvers:
@@ -46,7 +46,7 @@ certificatesResolvers:
     acme:
       email: your-email@example.com
       storage: acme.json
-      #caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      #caServer: "https://acme-staging-v02.api.letsencrypt.org/directory" # for testing
       caServer: "https://acme-v02.api.letsencrypt.org/directory" # for production
       keyType: EC384
       httpChallenge:
