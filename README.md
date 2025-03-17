@@ -18,7 +18,7 @@ You can configure Traefik in two ways:
 - The fully **dynamic** routing configuration (referred to as the **dynamic configuration**)
     - The dynamic configuration contains everything that defines how the requests are handled by your system. This configuration can change and is seamlessly hot-reloaded, without any request interruption or connection loss. 
     ```console 
-    foo@bar:~$ vim /data/config/dynamic.yml
+    foo@bar:~$ vim /data/config.yml
     ```
 
 - The startup configuration (referred to as the **static configuration**)
@@ -32,9 +32,19 @@ You can configure Traefik in two ways:
 ```console
 foo@bar:~$ docker network create proxy-network-name
 ```
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Change host name to your domaine name 
+```
+rule=Host(`traefik.yourdomaine.com`)"
+```
+- If you are planning on using letsencrypt as your certificatesResolvers change the email to your email
+```
+email: your-email@example.com
+```
+- Switch to the caServer for production
+```
+caServer: "https://acme-staging-v02.api.letsencrypt.org/directory" # for testing
+caServer: "https://acme-v02.api.letsencrypt.org/directory" # for production
+```
 
 
 ## Author 
