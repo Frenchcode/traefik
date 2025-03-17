@@ -43,10 +43,10 @@ http:
 
   # UserName : admin
   # Password : password
-  user-auth:
-    basicAuth:
-      users:
-        - "admin:password"
+  #user-auth:
+  #  basicAuth:
+  #    users:
+  #      - "admin:password"
 
 
   tls:
