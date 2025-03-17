@@ -7,7 +7,6 @@ log:
 
 api:
   dashboard: true
-  insecure: true
 
 entryPoints:
   web:
@@ -39,7 +38,7 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
   file:
-    filename: /configurations/dynamic.yaml
+    filename: /config.yaml
 
 
 certificatesResolvers:
