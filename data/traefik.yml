@@ -3,7 +3,9 @@ global:
   sendAnonymousUsage: false
 
 #log:
-#  level: DEBUG # change to INFO for production
+  #level: DEBUG # change to INFO for production
+  #level: INFO
+  #level: DEBUG
 
 api:
   dashboard: true
@@ -40,7 +42,6 @@ providers:
     exposedByDefault: false
   file:
     filename: /config.yml
-
 
 certificatesResolvers:
   letsencrypt:
