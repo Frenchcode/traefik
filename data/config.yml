@@ -49,7 +49,7 @@ http:
   #      - "admin:password"
 
 
-  tls:
+tls:
   options:
     default:
       cipherSuites:
