@@ -46,6 +46,13 @@ caServer: "https://acme-staging-v02.api.letsencrypt.org/directory" # for testing
 caServer: "https://acme-v02.api.letsencrypt.org/directory" # for production
 ```
 
+- Create your Traefik Dashboard username and password using htpasswd
+```
+foo@bar:$ sudo apt install apache2-utils
+foo@bar:$ htpasswd -nb username password
+    username:$encrypted/password
+```
+
 
 ## Author 
 
