@@ -48,7 +48,6 @@ http:
   #    users:
   #      - "admin:password"
 
-
 tls:
   options:
     default:
