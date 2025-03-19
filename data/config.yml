@@ -11,8 +11,7 @@ http:
         stsIncludeSubdomains: true                        # Add includeSubdomains to the Strict-Transport-Security header
         stsPreload: true                                  # Add preload flag appended to the Strict-Transport-Security header
         stsSeconds: 15552000                              # Set the max-age of the Strict-Transport-Security header (63072000 = 2 years)
-        customFrameOptionsValue: SAMEORIGIN               # X-Frame-Options: SAMEORIGIN allows the page to be framed by pages from the same site
-        contentSecurityPolicy: "default-src 'self'"     
+        customFrameOptionsValue: SAMEORIGIN               # X-Frame-Options: SAMEORIGIN allows the page to be framed by pages from the same site    
         customRequestHeaders:
           X-Forwarded-Proto: https                        # Adds an X-Forwarded-Proto: https header, indicating that the request originally came through HTTPS.
     https-redirectscheme:
