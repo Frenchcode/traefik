@@ -22,7 +22,6 @@ http:
       headers:
         customResponseHeaders:
           Permissions-Policy: "interest-cohort=()"
-
 tls:
   options:
     default:
