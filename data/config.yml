@@ -2,18 +2,19 @@ http:
   middlewares:    
     default-security-headers:
       headers:
-        customBrowserXSSValue: 0                            # X-XSS-Protection=1; mode=block
-        contentTypeNosniff: true                          # X-Content-Type-Options=nosniff
+        contentTypeNosniff: true                          # X-Content-Type-Options=nosniff Prevents browsers from MIME-type sniffing, enforcing strict Content-Type checking
         forceSTSHeader: true                              # Add the Strict-Transport-Security header even when the connection is HTTP
-        frameDeny: false                                   # X-Frame-Options=deny
-        referrerPolicy: "strict-origin-when-cross-origin"
+        frameDeny: true                                   # X-Frame-Options: DENY prevents clickjacking attacks.
+        browserXssFilter: true                            # X-XSS-Protection: 1; mode=block Enables the XSS filter built into most browsers (1; mode=block)
+        referrerPolicy: "strict-origin-when-cross-origin" # Controls how much referrer info is sent. This setting sends the origin when navigating cross-origin but keeps the full URL for same-origin requests.
         sslRedirect: true                                 # Redirect to HTTPS if the connection is HTTP
         stsIncludeSubdomains: true                        # Add includeSubdomains to the Strict-Transport-Security header
         stsPreload: true                                  # Add preload flag appended to the Strict-Transport-Security header
-        stsSeconds: 3153600                              # Set the max-age of the Strict-Transport-Security header (63072000 = 2 years)
+        stsSeconds: 15552000                              # Set the max-age of the Strict-Transport-Security header (63072000 = 2 years)
+        customFrameOptionsValue: SAMEORIGIN               # X-Frame-Options: SAMEORIGIN allows the page to be framed by pages from the same site
         contentSecurityPolicy: "default-src 'self'"     
         customRequestHeaders:
-          X-Forwarded-Proto: https
+          X-Forwarded-Proto: https                        # Adds an X-Forwarded-Proto: https header, indicating that the request originally came through HTTPS.
     https-redirectscheme:
       redirectScheme:
         scheme: https
@@ -23,30 +24,16 @@ http:
         customResponseHeaders:
           Permissions-Policy: "interest-cohort=()"
 
-  #routers:
-  #  portainer:
-  #    entryPoints:
-  #      - "websecure"
-  #    rule: "Host(`portainer.example.com`)"
-  #    middlewares:
-  #      - default-security-headers
-  #      - https-redirectscheme
-  #    tls: {}
-  #    service: portainer
-
-  #services:
-  #  portainer:
-  #    loadBalancer:
-  #      servers:
-  #        - url: "https://ip-addrese:9443"
-  #      passHostHeader: true
-
-  # UserName : admin
-  # Password : password
-  #user-auth:
-  #  basicAuth:
-  #    users:
-  #      - "admin:password"
+  routers:
+    portainer:
+      entryPoints:
+        - "websecure"
+      rule: "Host(`portainer.example.com`)"
+      middlewares:
+        - default-security-headers
+        - https-redirectscheme
+      tls: {}
+      service: portainer
 
 tls:
   options:
