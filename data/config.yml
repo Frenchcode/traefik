@@ -23,17 +23,6 @@ http:
         customResponseHeaders:
           Permissions-Policy: "interest-cohort=()"
 
-  routers:
-    portainer:
-      entryPoints:
-        - "websecure"
-      rule: "Host(`portainer.example.com`)"
-      middlewares:
-        - default-security-headers
-        - https-redirectscheme
-      tls: {}
-      service: portainer
-
 tls:
   options:
     default:
